@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+package user;
+
+option go_package = "user/pb";
+
+service UserService {
+    rpc Create(CreateRequest) returns (CreateResponse);
+    rpc Update(UpdateRequest) returns (UpdateResponse);
+    rpc Get(GetRequest) returns (GetResponse);
+    rpc Delete(DeleteRequest) returns (DeleteResponse);
+}
+
+message User{
+    int64 id = 1;
+    string name = 2;
+    string email = 3;
+    string password = 4;
+}
+
+message CreateRequest{
+    string name = 2;
+    string email = 3;
+    string password = 4;
+}
+message CreateResponse{
+    int64 id = 1;
+}
+
+message UpdateRequest{
+    int64 id = 1;
+    optional string name = 2;
+    optional string email = 3;
+    optional string password = 4;
+}
+message UpdateResponse{
+    int64 id = 1;
+}
+
+message GetRequest{
+    oneof selector {
+        int64 id = 1;
+        string email = 2;
+    }
+}
+message GetResponse{
+    User user = 1;
+}
+
+message DeleteRequest{
+    int64 id = 1;
+}
+message DeleteResponse{}
