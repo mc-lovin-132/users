@@ -511,6 +511,166 @@ func (*DeleteResponse) Descriptor() ([]byte, []int) {
 	return file_user_proto_rawDescGZIP(), []int{8}
 }
 
+type HealthRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *HealthRequest) Reset() {
+	*x = HealthRequest{}
+	mi := &file_user_proto_msgTypes[9]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *HealthRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*HealthRequest) ProtoMessage() {}
+
+func (x *HealthRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_user_proto_msgTypes[9]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use HealthRequest.ProtoReflect.Descriptor instead.
+func (*HealthRequest) Descriptor() ([]byte, []int) {
+	return file_user_proto_rawDescGZIP(), []int{9}
+}
+
+type HealthResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Status        string                 `protobuf:"bytes,1,opt,name=status,proto3" json:"status,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *HealthResponse) Reset() {
+	*x = HealthResponse{}
+	mi := &file_user_proto_msgTypes[10]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *HealthResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*HealthResponse) ProtoMessage() {}
+
+func (x *HealthResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_user_proto_msgTypes[10]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use HealthResponse.ProtoReflect.Descriptor instead.
+func (*HealthResponse) Descriptor() ([]byte, []int) {
+	return file_user_proto_rawDescGZIP(), []int{10}
+}
+
+func (x *HealthResponse) GetStatus() string {
+	if x != nil {
+		return x.Status
+	}
+	return ""
+}
+
+type PingRequest struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *PingRequest) Reset() {
+	*x = PingRequest{}
+	mi := &file_user_proto_msgTypes[11]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *PingRequest) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PingRequest) ProtoMessage() {}
+
+func (x *PingRequest) ProtoReflect() protoreflect.Message {
+	mi := &file_user_proto_msgTypes[11]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PingRequest.ProtoReflect.Descriptor instead.
+func (*PingRequest) Descriptor() ([]byte, []int) {
+	return file_user_proto_rawDescGZIP(), []int{11}
+}
+
+type PingResponse struct {
+	state         protoimpl.MessageState `protogen:"open.v1"`
+	Message       string                 `protobuf:"bytes,2,opt,name=message,proto3" json:"message,omitempty"`
+	unknownFields protoimpl.UnknownFields
+	sizeCache     protoimpl.SizeCache
+}
+
+func (x *PingResponse) Reset() {
+	*x = PingResponse{}
+	mi := &file_user_proto_msgTypes[12]
+	ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+	ms.StoreMessageInfo(mi)
+}
+
+func (x *PingResponse) String() string {
+	return protoimpl.X.MessageStringOf(x)
+}
+
+func (*PingResponse) ProtoMessage() {}
+
+func (x *PingResponse) ProtoReflect() protoreflect.Message {
+	mi := &file_user_proto_msgTypes[12]
+	if x != nil {
+		ms := protoimpl.X.MessageStateOf(protoimpl.Pointer(x))
+		if ms.LoadMessageInfo() == nil {
+			ms.StoreMessageInfo(mi)
+		}
+		return ms
+	}
+	return mi.MessageOf(x)
+}
+
+// Deprecated: Use PingResponse.ProtoReflect.Descriptor instead.
+func (*PingResponse) Descriptor() ([]byte, []int) {
+	return file_user_proto_rawDescGZIP(), []int{12}
+}
+
+func (x *PingResponse) GetMessage() string {
+	if x != nil {
+		return x.Message
+	}
+	return ""
+}
+
 var File_user_proto protoreflect.FileDescriptor
 
 const file_user_proto_rawDesc = "" +
@@ -549,12 +709,21 @@ const file_user_proto_rawDesc = "" +
 	".user.UserR\x04user\"\x1f\n" +
 	"\rDeleteRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x03R\x02id\"\x10\n" +
-	"\x0eDeleteResponse2\xd8\x01\n" +
+	"\x0eDeleteResponse\"\x0f\n" +
+	"\rHealthRequest\"(\n" +
+	"\x0eHealthResponse\x12\x16\n" +
+	"\x06status\x18\x01 \x01(\tR\x06status\"\r\n" +
+	"\vPingRequest\"(\n" +
+	"\fPingResponse\x12\x18\n" +
+	"\amessage\x18\x02 \x01(\tR\amessage2\xd8\x01\n" +
 	"\vUserService\x123\n" +
 	"\x06Create\x12\x13.user.CreateRequest\x1a\x14.user.CreateResponse\x123\n" +
 	"\x06Update\x12\x13.user.UpdateRequest\x1a\x14.user.UpdateResponse\x12*\n" +
 	"\x03Get\x12\x10.user.GetRequest\x1a\x11.user.GetResponse\x123\n" +
-	"\x06Delete\x12\x13.user.DeleteRequest\x1a\x14.user.DeleteResponseB\tZ\auser/pbb\x06proto3"
+	"\x06Delete\x12\x13.user.DeleteRequest\x1a\x14.user.DeleteResponse2s\n" +
+	"\rHealthService\x123\n" +
+	"\x06Health\x12\x13.user.HealthRequest\x1a\x14.user.HealthResponse\x12-\n" +
+	"\x04Ping\x12\x11.user.PingRequest\x1a\x12.user.PingResponseB\tZ\auser/pbb\x06proto3"
 
 var (
 	file_user_proto_rawDescOnce sync.Once
@@ -568,7 +737,7 @@ func file_user_proto_rawDescGZIP() []byte {
 	return file_user_proto_rawDescData
 }
 
-var file_user_proto_msgTypes = make([]protoimpl.MessageInfo, 9)
+var file_user_proto_msgTypes = make([]protoimpl.MessageInfo, 13)
 var file_user_proto_goTypes = []any{
 	(*User)(nil),           // 0: user.User
 	(*CreateRequest)(nil),  // 1: user.CreateRequest
@@ -579,22 +748,30 @@ var file_user_proto_goTypes = []any{
 	(*GetResponse)(nil),    // 6: user.GetResponse
 	(*DeleteRequest)(nil),  // 7: user.DeleteRequest
 	(*DeleteResponse)(nil), // 8: user.DeleteResponse
+	(*HealthRequest)(nil),  // 9: user.HealthRequest
+	(*HealthResponse)(nil), // 10: user.HealthResponse
+	(*PingRequest)(nil),    // 11: user.PingRequest
+	(*PingResponse)(nil),   // 12: user.PingResponse
 }
 var file_user_proto_depIdxs = []int32{
-	0, // 0: user.GetResponse.user:type_name -> user.User
-	1, // 1: user.UserService.Create:input_type -> user.CreateRequest
-	3, // 2: user.UserService.Update:input_type -> user.UpdateRequest
-	5, // 3: user.UserService.Get:input_type -> user.GetRequest
-	7, // 4: user.UserService.Delete:input_type -> user.DeleteRequest
-	2, // 5: user.UserService.Create:output_type -> user.CreateResponse
-	4, // 6: user.UserService.Update:output_type -> user.UpdateResponse
-	6, // 7: user.UserService.Get:output_type -> user.GetResponse
-	8, // 8: user.UserService.Delete:output_type -> user.DeleteResponse
-	5, // [5:9] is the sub-list for method output_type
-	1, // [1:5] is the sub-list for method input_type
-	1, // [1:1] is the sub-list for extension type_name
-	1, // [1:1] is the sub-list for extension extendee
-	0, // [0:1] is the sub-list for field type_name
+	0,  // 0: user.GetResponse.user:type_name -> user.User
+	1,  // 1: user.UserService.Create:input_type -> user.CreateRequest
+	3,  // 2: user.UserService.Update:input_type -> user.UpdateRequest
+	5,  // 3: user.UserService.Get:input_type -> user.GetRequest
+	7,  // 4: user.UserService.Delete:input_type -> user.DeleteRequest
+	9,  // 5: user.HealthService.Health:input_type -> user.HealthRequest
+	11, // 6: user.HealthService.Ping:input_type -> user.PingRequest
+	2,  // 7: user.UserService.Create:output_type -> user.CreateResponse
+	4,  // 8: user.UserService.Update:output_type -> user.UpdateResponse
+	6,  // 9: user.UserService.Get:output_type -> user.GetResponse
+	8,  // 10: user.UserService.Delete:output_type -> user.DeleteResponse
+	10, // 11: user.HealthService.Health:output_type -> user.HealthResponse
+	12, // 12: user.HealthService.Ping:output_type -> user.PingResponse
+	7,  // [7:13] is the sub-list for method output_type
+	1,  // [1:7] is the sub-list for method input_type
+	1,  // [1:1] is the sub-list for extension type_name
+	1,  // [1:1] is the sub-list for extension extendee
+	0,  // [0:1] is the sub-list for field type_name
 }
 
 func init() { file_user_proto_init() }
@@ -613,9 +790,9 @@ func file_user_proto_init() {
 			GoPackagePath: reflect.TypeOf(x{}).PkgPath(),
 			RawDescriptor: unsafe.Slice(unsafe.StringData(file_user_proto_rawDesc), len(file_user_proto_rawDesc)),
 			NumEnums:      0,
-			NumMessages:   9,
+			NumMessages:   13,
 			NumExtensions: 0,
-			NumServices:   1,
+			NumServices:   2,
 		},
 		GoTypes:           file_user_proto_goTypes,
 		DependencyIndexes: file_user_proto_depIdxs,

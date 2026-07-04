@@ -51,8 +51,10 @@ func (a *App) Start(ctx context.Context) error {
 
 	repo := repository.New(db)
 	srvc := service.New(repo)
-
 	handler := handlers.New(srvc)
+
+	healthService := service.NewHealthService(db)
+	healthHandler := handlers.NewHealthHandler(healthService)
 
 	lis, err := net.Listen("tcp", a.cfg.Addr())
 	if err != nil {
@@ -61,8 +63,9 @@ func (a *App) Start(ctx context.Context) error {
 	grpcServer := grpc.NewServer(
 		grpc.UnaryInterceptor(interceptors.NewLoggingInterceptor(a.logger)),
 	)
+
+	pb.RegisterHealthServiceServer(grpcServer, healthHandler)
 	pb.RegisterUserServiceServer(grpcServer, handler)
-	a.logger.Info("gRPC server listening", zap.String("port", a.cfg.Port))
 
 	errG, gCtx := errgroup.WithContext(ctx)
 
@@ -73,6 +76,7 @@ func (a *App) Start(ctx context.Context) error {
 	})
 
 	errG.Go(func() error {
+		a.logger.Info("gRPC server listening", zap.String("port", a.cfg.Port))
 		if err := grpcServer.Serve(lis); err != nil {
 			a.logger.Error("grpc server run failed", zap.Error(err))
 			return err

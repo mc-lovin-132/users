@@ -51,3 +51,20 @@ message DeleteRequest{
     int64 id = 1;
 }
 message DeleteResponse{}
+
+
+
+service HealthService{
+    rpc Health(HealthRequest)returns (HealthResponse);
+    rpc Ping(PingRequest)returns (PingResponse);
+}
+
+message HealthRequest{}
+message HealthResponse{
+    string status = 1;
+}
+
+message PingRequest{}
+message PingResponse{
+    string message = 2;
+}
